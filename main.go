@@ -12,7 +12,7 @@ var ctx = context.Background()
 
 func main(){
 	rdb:= redis.NewClient(&redis.Options{
-		Addr: "localhost:6379",
+		Addr: "redis:6379",
 		DB:0,
 	})
 
@@ -22,7 +22,7 @@ func main(){
 		log.Fatal("Error connecting:redis",err)
 	}
 
-	err:=rdb.Set(ct, "name", "John",0).Err()
+	err =rdb.Set(ctx, "name", "John",0).Err()
 
 	if err!=nil{
 		log.Fatal("Set not set :)", err)
